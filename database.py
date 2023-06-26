@@ -1,11 +1,13 @@
 from sqlalchemy import create_engine, text
 
-db_connection_string="mysql+pymysql://ed5q3vbg2vif2mrtojmv:pscale_pw_rU4taBBLna4n9FWtgxVHxPjGMLhCIczEiMMghDhHn5n@aws.connect.psdb.cloud/miniproject?charset=utf8mb4"
-engine = create_engine(db_connection_string,connect_args={
+database_str="mysql+pymysql://diq9icmkwg6984se3o5q:pscale_pw_rQo8Irx4oMyD4SzfrsX3DT9fYZcr1CKiTuc1Z26dzzl@aws.connect.psdb.cloud/miniproject?charset=utf8mb4"
+engine = create_engine(database_str,
+                      connect_args={
         "ssl": {
-            "ssl_ca": "/etc/ssl/cert.pem"
+           "ssl_ca": "/etc/ssl/cert.pem"
         }
     })
+
 with engine.connect() as conn:
   result=conn.execute(text("select * from res"))
   print(result.all())
