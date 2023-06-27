@@ -7,6 +7,5 @@ engine = create_engine(database_str,
                          "ssl_ca": "/etc/ssl/cert.pem"
                        }})
 
-with engine.connect() as conn:
-  result = conn.execute(text("select * from res"))
-  print(result.all())
+
+    
