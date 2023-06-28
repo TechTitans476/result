@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine,text
 import os
 
 database_str = os.environ['DB_CONNECTION_STRING']

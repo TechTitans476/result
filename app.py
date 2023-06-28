@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from database import engine, text
+from database import engine
 
 app = Flask(__name__)
 
@@ -40,20 +40,8 @@ def insertintodb():
   m = request.form.get('year')
   n = request.form.get('sem')
   res1 = pd.DataFrame(csv_data)
-  res2 = res1.columns.tolist()
-  s = "CREATE TABLE "
-  s = s + q + z + m + n + '('
-  for i in res2:
-    if res2.index(i) == 0:
-      s += i.replace(" ", "") + ' varchar(10) NOT NULL,'
-    else:
-      if ('-' in i):
-        s += i.replace("-", "") + ' varchar(10),'
-      else:
-        s += i.replace(" ", '') + ' varchar(10),'
-  s += 'PRIMARY KEY (' + res2[0].replace(" ", '') + '));'
-  with engine.connect() as conn:
-    conn.execute(text(s))
+  k = q + z + m + n
+  res1.to_sql(k, engine, if_exists='replace', index=False)
   return render_template("admin2.html")
 
 
