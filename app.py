@@ -1,11 +1,18 @@
 from flask import Flask, render_template, request, session, redirect
 import pandas as pd
 from database import engine, text
-import os
+import os, random
+from flask_mail import Mail, Message
 
 os.urandom(24)
-
 app = Flask(__name__)
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'miniproject174@gmail.com'
+app.config['MAIL_PASSWORD'] = "ddojjjrjdqjqogoz"
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 app.secret_key = "mandy1458"
 
 
@@ -90,10 +97,39 @@ def retrive_data():
   }
   table_name = dict[rollno[6:8]] + academic_year + year + sem
   with engine.conn() as conn:
-    query = text(f"select * from {table_name} where `HT No`= :val")
+    query = text(f"select * from {table_name} where `HT No`= :val;")
     result = conn.execute(query, val=rollno)
     res = dict(result.all())
   return render_template("result.html", result=res)
+
+
+def generate_otp():
+  return str(random.randint(100000, 999999))
+
+
+@app.route('/send-otp', methods=['GET', 'POST'])
+def check_rollno():
+  gmail = str(request.form.get('rollno'))
+  roll = gmail.upper()
+  gmail = gmail.lower() + '@gcet.edu.in'
+  print(gmail)
+  session['otp1'] = generate_otp()
+  msg = Message(
+    "OTP to view Your result",
+    sender="miniproject174@gmail.com",
+    recipients=[gmail],
+  )
+  msg.body = f"You OTP:{session['otp1']}"
+  mail.send(msg)
+  return render_template("resultmail1.html", roll=roll)
+
+
+@app.route('/check-otp', methods=["POST"])
+def check_otp():
+  otp2 = str(request.form.get("otp"))
+  if session['otp1'] == otp2:
+    return render_template("showresults.html")
+  return render_template("resultmail1.html", k="Invalid OTP")
 
 
 if __name__ == "__main__":

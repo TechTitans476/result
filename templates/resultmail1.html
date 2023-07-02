@@ -83,26 +83,20 @@
     </div>
   <br><br>
       <center>
+        <h1 style="color:blueviolet;" > Enter the OTP sent to your mail </h1>
         <div class="">
-          <form action="/send-otp" method="POST">
+          <form action="/check-otp" method="POST">
       <button class="input" ><b>ROLL NO</b></button>
-            <input type="text" name="rollno" placeholder="Enter your rollno here" class="input1" required/>
-        <div class="centered">
-         <div class="otp-input" align="center">
-          <input type="text" maxlength="1" />
-          <input type="text" maxlength="1" />
-          <input type="text" maxlength="1" />
-          <input type="text" maxlength="1" />
-          <input type="text" maxlength="1" />
-          <input type="text" maxlength="1" />
-         </div></div>
-        <button type="submit" class="secondary-button">Send OTP</button><br>
-    </form>
-    <form action=/check-otp>
-        <button type="submit" class="secondary-button">Verify OTP</button>
+            {% if roll %}
+              <label>{{roll}}</label><br>
+            {% if k %}
+            <p color:red;>{{k}}</p><br>
+            {%endif%}
+            {%endif%}
+            <input type="text" name="otp" placeholder="Enter the OTP" required/>
+          <button type="submit" class="secondary-button">Verify OTP</button>
     </form>
   </div>
         </center>
-    </form>
   </body>
 </html>
