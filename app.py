@@ -84,10 +84,9 @@ def insertintodb():
 
 @app.route('/result', methods=['POST'])
 def retrive_data():
-  rollno = request.form.get('rollno')
-  rollno = rollno.toupper()
-  year = request.form.get('year1')
-  sem = request.form.get('sem1')
+  rollno = str(request.form.get('rollno'))
+  rollno = rollno.upper()
+  year_sem = request.form.get('button')
   academic_year = rollno[0:2]
   dict = {
     "05": "cse",
@@ -95,12 +94,13 @@ def retrive_data():
     "03": "mech",
     "12": "it",
   }
-  table_name = dict[rollno[6:8]] + academic_year + year + sem
-  with engine.conn() as conn:
+  table_name = "cse" + academic_year + year_sem
+  print(table_name)
+  with engine.connect() as conn:
     query = text(f"select * from {table_name} where `HT No`= :val;")
     result = conn.execute(query, val=rollno)
     res = dict(result.all())
-  return render_template("result.html", result=res)
+  return render_template("retrieve.html", result=res)
 
 
 def generate_otp():
@@ -133,4 +133,4 @@ def check_otp():
 
 
 if __name__ == "__main__":
-  app.run(debug=True, host='0.0.0.0')
+  app.run(debug=True, port=8000)
