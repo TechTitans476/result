@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect
 import pandas as pd
-from database import engine, text
+from database import engine,retrieve_result
 import os, random
 from flask_mail import Mail, Message
 
@@ -14,11 +14,6 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 app.secret_key = "mandy1458"
-
-
-def redirect_on_reload():
-  if request.endpoint != '/':
-    return redirect('/')
 
 
 @app.route('/')
@@ -84,23 +79,21 @@ def insertintodb():
 
 @app.route('/result', methods=['POST'])
 def retrive_data():
-  rollno = str(request.form.get('rollno'))
+  rollno = str(session['roll'])
   rollno = rollno.upper()
   year_sem = request.form.get('button')
-  academic_year = rollno[0:2]
-  dict = {
+  dictionary = {
     "05": "cse",
     "04": "ece",
     "03": "mech",
     "12": "it",
+    "67":"iot"
+    
   }
-  table_name = "cse" + academic_year + year_sem
+  table_name = dictionary[rollno[6:8]] + rollno[0:2] + year_sem
   print(table_name)
-  with engine.connect() as conn:
-    query = text(f"select * from {table_name} where `HT No`= :val;")
-    result = conn.execute(query, val=rollno)
-    res = dict(result.all())
-  return render_template("retrieve.html", result=res)
+  res1=retrieve_result(table_name,rollno)
+  return render_template('retrieve.html', results=res1)
 
 
 def generate_otp():
@@ -111,26 +104,28 @@ def generate_otp():
 def check_rollno():
   gmail = str(request.form.get('rollno'))
   roll = gmail.upper()
+  session['roll'] = roll
   gmail = gmail.lower() + '@gcet.edu.in'
-  print(gmail)
+  #print(gmail)
   session['otp1'] = generate_otp()
   msg = Message(
     "OTP to view Your result",
     sender="miniproject174@gmail.com",
     recipients=[gmail],
   )
-  msg.body = f"You OTP:{session['otp1']}"
+  msg.body = f"Your OTP:{session['otp1']}"
   mail.send(msg)
   return render_template("resultmail1.html", roll=roll)
 
 
 @app.route('/check-otp', methods=["POST"])
 def check_otp():
+  roll = session['roll']
   otp2 = str(request.form.get("otp"))
   if session['otp1'] == otp2:
-    return render_template("showresults.html")
+    return render_template("showresults.html", roll=roll)
   return render_template("resultmail1.html", k="Invalid OTP")
 
 
 if __name__ == "__main__":
-  app.run(debug=True, port=8000)
+  app.run(debug=True, host='0.0.0.0')

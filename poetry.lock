@@ -45,6 +45,18 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-mail"
+version = "0.9.1"
+description = "Flask extension for sending email"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+blinker = "*"
+Flask = "*"
+
+[[package]]
 name = "greenlet"
 version = "2.0.2"
 description = "Lightweight in-process concurrent programming"
@@ -230,13 +242,14 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "42228c095ab6c5b0b605d1366524eb9c3980d33e2ef6e0f7af4afd2eec01f69c"
+content-hash = "d641a8c9f8b4062047f748260fbac10e926172ae54958cf931141fc04491871e"
 
 [metadata.files]
 blinker = []
 click = []
 colorama = []
 flask = []
+flask-mail = []
 greenlet = []
 itsdangerous = []
 jinja2 = []

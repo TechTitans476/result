@@ -86,12 +86,10 @@
         <h1 style="color:blueviolet;" > Enter the OTP sent to your mail </h1>
         <div class="">
           <form action="/check-otp" method="POST">
-      <button class="input" ><b>ROLL NO</b></button>
-            {% if roll %}
+      <label class="input"><b>ROLL NO</b></label>
               <label>{{roll}}</label><br>
             {% if k %}
-            <p color:red;>{{k}}</p><br>
-            {%endif%}
+            <p color:"red";>{{k}}</p><br>
             {%endif%}
             <input type="text" name="otp" placeholder="Enter the OTP" required/>
           <button type="submit" class="secondary-button">Verify OTP</button>

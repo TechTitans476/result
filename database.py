@@ -6,8 +6,15 @@ engine = create_engine(database_str,
                        connect_args={"ssl": {
                          "ssl_ca": "/etc/ssl/cert.pem"
                        }})
-with engine.connect() as conn:
-  query = text("select * from cse2031 where `HT No`= '20R11A0574';")
-  result = conn.execute(query)
-  #print(type(result))
-  #print(result.all())
+#def retrieve_result(tablename,roll):
+table_name = "cse2031"
+rollno = "20R11A0574"
+def retrieve_result(table_name,rollno):
+  with engine.connect() as conn:
+    query = text(f"select * from {table_name} where `HT No`= :rollno;")
+    result = conn.execute(query, {"rollno": rollno})
+    row = result.fetchone()  # Fetch the first row
+    column_names = result.keys()  # Get the column names
+    res1 = dict(zip(column_names, row))
+    print(res1)# Create a dictionary from column names and row values
+    return res1
