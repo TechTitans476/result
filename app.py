@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect
 import pandas as pd
-from database import engine,retrieve_result
+from database import engine, retrieve_result
 import os, random
 from flask_mail import Mail, Message
 
@@ -73,7 +73,7 @@ def insertintodb():
   n = request.form.get('sem')
   res1 = pd.DataFrame(csv_data)
   k = q + z + m + n
-  res1.to_sql(k, engine, if_exists='replace', index=False)
+  res1.to_sql(k, engine, if_exists='replace', index=False, schema=None)
   return render_template("admin2.html")
 
 
@@ -87,12 +87,11 @@ def retrive_data():
     "04": "ece",
     "03": "mech",
     "12": "it",
-    "67":"iot"
-    
+    "69": "iot"
   }
   table_name = dictionary[rollno[6:8]] + rollno[0:2] + year_sem
   print(table_name)
-  res1=retrieve_result(table_name,rollno)
+  res1 = retrieve_result(table_name, rollno)
   return render_template('retrieve.html', results=res1)
 
 
