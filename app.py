@@ -73,7 +73,7 @@ def insertintodb():
   n = request.form.get('sem')
   res1 = pd.DataFrame(csv_data)
   k = q + z + m + n
-  res1.to_sql(k, engine, if_exists='replace', index=False, schema=None)
+  res1.to_sql(name=k, con=engine, if_exists='replace', index=False)
   return render_template("admin2.html")
 
 
