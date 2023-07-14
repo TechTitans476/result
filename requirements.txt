@@ -2,5 +2,5 @@ Flask
 gunicorn
 sqlalchemy
 pymysql
-pandas
+--upgrade pandas
 flask_mail

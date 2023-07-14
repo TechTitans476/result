@@ -7,8 +7,8 @@ engine = create_engine(database_str,
                          "ssl_ca": "/etc/ssl/cert.pem"
                        }})
 #def retrieve_result(tablename,roll):
-table_name = "cse2031"
-rollno = "20R11A0574"
+#table_name = "cse2031"
+#rollno = "20R11A0574"
 def retrieve_result(table_name,rollno):
   with engine.connect() as conn:
     query = text(f"select * from {table_name} where `HT No`= :rollno;")
