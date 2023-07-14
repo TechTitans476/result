@@ -1,6 +1,6 @@
 Flask
 gunicorn
-sqlalchemy
+sqlalchemy-databricks
 pymysql
-upgrade pandas
+pandas
 flask_mail
