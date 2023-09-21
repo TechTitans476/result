@@ -1,0 +1,24 @@
+{% extends "adminheader.html" %}
+
+{% block title %}Data Analysis{% endblock %}
+
+{% block content %}
+<br><br><br><br>
+<body style="background-image: url({{ url_for('static', filename='images/bg.jpeg') }});
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      height:250vh;">
+  <h2><center style="color:white;font-size:25px;">Over All Branch Analysis</h2></center>
+        <center> <div>
+        <img src="data:image/png;base64,{{ plot_data }}" alt="Pie Chart" style="background:transparent; " height=500px width=700px><br><br>
+   <h2><center style="color:white;font-size:25px;">Subject Wise Analysis</h2> 
+          <img src="data:image/png;base64,{{ bar }}" alt="Pie Chart" style="background:transparent;">
+        </center>
+    </div><br><br><br>
+  <form action="/send_email" method="post">
+    <input type="submit" value="Mail"></input>
+  </form>
+</body>
+{% endblock %}
+

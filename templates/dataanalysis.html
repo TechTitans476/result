@@ -1,0 +1,48 @@
+{% extends "adminheader.html" %}
+{% block title %}My Page{% endblock %}
+{% block content %}
+<body style="background-image: url({{ url_for('static', filename='images/dataanalysis6.jpeg') }});
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+      height:100vh;">
+  <div><br><br>
+    <form method="POST" action="/submitform" style="align-items:center;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+       <label class="primary-button" style="background-color:#D3A919;
+        "> BRANCH </label>
+            <select required name="branch" class="inp" id="branch" aria-required>
+                <option value=''>--Select branch--</option>
+                <option value="cse">CSE</option>
+                <option value="ece">ECE</option>
+                <option value="eee">EEE</option>
+                <option value="mech">MECH</option>
+                <option value="iot">CSE-IOT</option>
+                <option value="aiml">CSE-AIML</option>
+                <option value="ds">CSE-DS</option>
+                <option value="cs">CSE-CS</option>
+            </select><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  <label class="primary-button" style="background-color:#D3A919;
+        "> YEAR</label>
+            <select required name="year" class="inp" id="year" >
+               <option value=''>--Select year--</option>
+                <option value="1">I</option>
+                <option value="2">II</option>
+                <option value="3">III</option>
+                <option value="4">IV</option>
+            </select><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <label class="primary-button" style="background-color:#D3A919;"> AC-YEAR </label>
+      <input type="text" name="acyear" class="inp" id="acyear" style="height:30px;width:168px;border-radius:4px;"  placeholder="Enter the academic year" required/><br><br>
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <label class="primary-button" style="background-color:#D3A919;
+        "> SEMESTER </label>
+            <select  class="inp" id="sem" name="sem">
+               <option value=''>--Select semester--</option>
+                <option value="1">I</option>
+                <option value="2">II</option>
+            </select><br><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <button class="primary-button" style="background-color:green;cursor:pointer">Submit</button>
+    </form>
+  </div>
+  <!-- Your content for my_page.html goes here -->
+</body>
+{% endblock %}

@@ -4,3 +4,4 @@ sqlalchemy-databricks
 pymysql
 pandas
 flask_mail
+matplotlib 

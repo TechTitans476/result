@@ -1,0 +1,32 @@
+
+<html>
+<head>
+  <title>Student Result Management</title>
+  <!-- Link to the external CSS file -->
+  <link href="{{ url_for('static', filename='styles.css') }}"  rel="stylesheet" >
+</head>
+<body >
+  <!-- Header section -->
+  <header>
+  </header>
+  <form method="GET" action="/logout">
+          <div class="">
+          <center style="font-size:75px; color:white;">ADMIN </center> 
+          </div>
+          <br><br>
+      <button type="submit" style="position:relative;bottom:110px; float:right; color:white; font-size:20px;" class="logout"><b>Log Out</b></button> 
+  </form> <br><br><br><br>
+   <center>
+    <form action="/adminn">
+    <button type="submit" class="admin-form" ><b>Upload Result</b></button></form>
+   
+    <form action="/data">
+    <button type="submit" class="admin-form"><b>Data Analysis </b></button></form>
+    <form>
+    <button type="submit" class="admin-form"><b>View Data </b></button>
+</form>
+   </center>
+  <!-- Rest of the content goes here -->
+
+</body>
+</html>

@@ -1,100 +1,39 @@
 <html>
   <head>
-    <title>Results</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <style>
-      .input{
-                line-height:.3em;
-                background-color: #232530; 
-                width: 140px;
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 15px;
-                
-              }
-      .secondary-button {
-                background-color: #0b945f;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-              }
-              .input1{
-                width: 175px; 
-                height: 35px;
-              }
-              .otp-input {
-                display: flex;
-              }
-              
-              .otp-input input {
-                width: 40px;
-                height: 40px;
-                text-align: center;
-                margin-right: 10px;
-                font-size: 18px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                align-items: center;
-              }
-              
-              .otp-input input:last-child {
-                margin-right: 0;
-              }
-              .centered{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height:150px;
-              }
-              .button-container {
-                display: inline-block;
-                position:relative;
-                right: 50px;
-                
-              }
-    </style>
-  </head>
-  <body>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <div class="">
-        <header class="p-3 text-bg-dark">
-            <div class="container">
-              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                  <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-        
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li><a href="https://result--miniproject174.repl.co/" class="nav-link px-2 text-secondary">Home</a></li>
-                  <li><a href="/admissions" class="nav-link px-2 text-white">Admissions</a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">Departments</a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">Clubs</a></li>
-                  <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-                </ul>
-              </div>
-            </div>
-        </header>
+  <title>Student Result Management</title>
+  <!-- Link to the external CSS file -->
+  <link href="{{ url_for('static', filename='styles.css') }}"  rel="stylesheet" >
+</head>
+<body style="background-image: url({{ url_for('static', filename='images/img2.jpg') }}); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+  <!-- Header section -->
+  <header>
+    <div class="header-container">
+      <h1><a href="/" style="color:white;">Home</a></h1>
+        <nav>
+        <ul>
+          <li><a href="/admissions">Admissions</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/result">Result</a></li>
+          <li></li>
+        </ul>
+      </nav>
     </div>
-  <br><br>
-      <center>
-        <h1 style="color:blueviolet;" > Enter the OTP sent to your mail </h1>
-        <div class="">
-          <form action="/check-otp" method="POST">
-      <label class="input"><b>ROLL NO</b></label>
-              <label>{{roll}}</label><br>
+  </header>
+
+      <header1>
+        <label class="input"><b>ROLL NO-</b></label>
+              <label><b>{{roll}}</b></label><br><br>
             {% if k %}
             <p color:"red";>{{k}}</p><br>
             {%endif%}
-            <input type="text" name="otp" placeholder="Enter the OTP" required/>
-          <button type="submit" class="secondary-button">Verify OTP</button>
+        <h1 style="color:green; font-size:25px;" >Enter the OTP sent to your mail! </h1>
+        <div class=""><br>
+          <form action="/check-otp" method="POST">
+          
+            <input type="text" name="otp" placeholder="Enter the OTP" required/>&nbsp
+          <button type="submit" style="background-color:green;"class="primary-button">Verify-OTP</button>
     </form>
   </div>
-        </center>
+        </header1>
   </body>
 </html>

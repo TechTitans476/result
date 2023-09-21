@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Result Management</title>
+  <!-- Link to the external CSS file -->
+  <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+  <!-- Header section -->
+  <header2>
+    <form action="/adminpage">
+      <button type="submit" class="logout"><b>Back</b></button>
+    </form>
+    <h1 class="centered-text"> ADMIN</h1>
+    <br><br>
+    <form action="/logout" method="GET">
+      <button type="submit" class="logout"><b>Log Out</b></button>
+    </form>
+  </header2>
+  <div>
+    {% block content %}
+    <!-- Default content if not overridden by the child template -->
+    {% endblock %}
+  </div>
+</body>
+</html>

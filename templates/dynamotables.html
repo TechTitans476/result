@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Tables</title>
+</head>
+<body>
+    <h1>Database Tables</h1>
+    <div>
+        {% for table in tables %}
+            <form action="/view_table" method="POST" style="display:inline;">
+                <input type="hidden" name="table_name" value="{{ table[0] }}">
+                <input type="submit" value="{{ table[0] }}">
+            </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

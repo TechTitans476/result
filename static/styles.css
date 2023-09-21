@@ -1,0 +1,196 @@
+/* CSS for the header */
+header {
+  color: white;
+  padding: 10px 20px;
+}
+body{
+  background-image: url('https://img.freepik.com/free-photo/ready-back-school_1134-12.jpg');
+  background-size: cover;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:none;
+}
+ header1 {
+      float: right;
+      margin-top: 150px;
+      margin-right:150px;
+    }
+    header1 label{
+      font-size:30px;
+      padding:1px 1px;      
+    }
+    /* Additional styling for the input and button */
+    header1 input[type="text"] {
+      border: 1px solid #ccc;
+      background:none;
+      height:33px;
+      border-radius:3px;
+      text-decoration-color:white;
+    }
+
+    header1 button {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color:#224d62;
+      font-size:20px;
+      width:100px;
+    }
+    header1 button:hover{
+       background-color:#0a523a;
+    }
+h1 {
+  margin: 0;
+}
+h1 a{
+  text-decoration:none;
+  display:inline;
+}
+h1 a:hover{
+  text-decoration:underline;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+  font-size:27px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:350px;
+    border-radius: 4px;
+    background-color:none;
+}
+.login-form {
+    padding: 10px;
+    width: 300px;
+    align-items:center;
+    background:none;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    background:none;
+}
+
+.login-form input {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    background:none;
+}
+
+.login-form button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #175e2d;
+    text-decoration-color:white;
+}
+
+.login-form button:hover {
+    background-color: #145228;
+}
+
+#custom-input::placeholder {
+  opacity: 1;
+  font-weight: bold;
+  color:white;
+}
+.admin-form{
+  padding: 10px;
+  width: 300px;
+  align-items:center;
+  background:none;
+  cursor:pointer;
+  color:white;
+  text-decoration:black;
+}
+.admin-form:hover{
+  background:#1ea1cc;
+  color:black;
+}
+.drop-down{
+ width:195px; 
+ height:30px;
+ border-radius:4px; 
+ background-color:none; 
+ color:white;
+}
+.logout {
+  width: 140px;
+  height: 50px;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  color:white;
+  font-size:20px;
+}
+.logout:hover{
+  background-color:#071207;
+}
+.primary-button{
+  line-height:.5em;
+  background-color: #1d989cbb; 
+  width: 140px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius:5px;
+  
+}
+.inp{
+   width: 175px; 
+   height: 35px;
+   border-radius:5px;
+
+}
+header2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: none;
+}
+
+/* Styling for the center text */
+.centered-text {
+  color:white;
+  font-size: 75px;
+  margin: 0;
+  flex-grow: 1; /* This will allow the "Admin" text to take up the remaining space */
+  text-align: center; /* To center the text horizontally */
+}
+
