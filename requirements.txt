@@ -5,3 +5,4 @@ pymysql
 pandas
 flask_mail
 matplotlib 
+seaborn
